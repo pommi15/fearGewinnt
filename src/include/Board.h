@@ -1,6 +1,6 @@
 /************************
-*       @>--}---        *
-*       fearGewinnt     *
+*								 0000	         *
+*      fearGewinnt      *
 *         Game          *
 *          by           *
 *    Thomas RAUHOFER    *
@@ -11,13 +11,19 @@
 *************************/
 #ifndef SRC_INCLUDE_BOARD_H_
 #define SRC_INCLUDE_BOARD_H_
+#include <string>
+#include <iostream>
 
 class Board {
+private:
+		int width;
+		int height;
+		std:string **board;
 public:
 		Board(int width, int height);
 		~Board();
-		bool drop();
-		void draw();
+		bool drop(int coloumn);
+		const void draw();
 };
 
 #endif  // SRC_INCLUDE_BOARD_H_
