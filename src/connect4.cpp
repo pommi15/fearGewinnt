@@ -12,7 +12,7 @@
 
 #include <iostream>
 
-#include "include/Board.h"
+#include "include/board.h"
 
 
 using namespace std;
@@ -28,11 +28,11 @@ int main() {
 		cin >> width;
 		cout << "Enter height: " << std::endl;
 		cin >> height;
-		
+
 		Board *fear = new Board(width, height);
 		fear->draw();
 
 		delete fear;
-	
+
 		return 0;
 }

@@ -18,7 +18,7 @@ class Board {
 private:
 		int width;
 		int height;
-		std:string **board;
+		std::string **board;
 public:
 		Board(int width, int height);
 		~Board();

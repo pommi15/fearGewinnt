@@ -9,8 +9,8 @@
 *     Tobias WATZEK     *
 *        if15b038       *
 *************************/
-#include "include/Board.h"
-#define FILLER '.' 
+#include "include/board.h"
+#define FILLER '.'
 
 Board::Board(int width, int height){
 		// Make the board rows
