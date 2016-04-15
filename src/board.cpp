@@ -10,34 +10,31 @@
 *        if15b038       *
 *************************/
 #include "include/board.h"
-#define FILLER '.'
+
+#include <string>
+#include <iostream>
+#include <vector>
+#include <fstream>
 
 Board::Board(int width, int height){
-		// Make the board rows
-		this->board = new std::string *[this->height];
-		// Create the columns row for row
-		for (int i = 0; i < this->height; ++i) {
-				this->board[i] = new std::string[this->width];
-				for (int j = 0; j < this->width; ++j) {
-						// Fill each column with a the Filler
-						this->board[i][j] = FILLER;
-				}
+	std::vector< std::vector <std::string> > board;
+	for(int i = 0; i < width; ++i){
+		for(int j = 0; j < height; ++j){
+			board[i][j] = '.';
 		}
+	}
+	for(int i = 0; i < width; ++i){
+		board[i][height] = i + 1;
+	}
 }
 Board::~Board(){
-		// Go through every row and delete it
-		for (int i = 0; i < this->height; ++i) {
-				delete[] this->board[i];
-		}
-		// delete the board
-		delete[] this->board;
 }
 bool Board::drop(int coloumn){
-		if (this->board[coloumn][0] != FILLER) {
+		if (this->board[coloumn][0] != '.') {
 				return false;
 		}
 		for (int i = 0; i < height; ++i) {
-				if (this->board[coloumn][i] != FILLER) {
+				if (this->board[coloumn][i] != '.') {
 						this->board[coloumn][i - 1] = 'X';
 				}
 		}

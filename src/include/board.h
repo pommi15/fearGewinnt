@@ -13,12 +13,13 @@
 #define SRC_INCLUDE_BOARD_H_
 #include <string>
 #include <iostream>
+#include <vector>
 
 class Board {
 private:
 		int width;
 		int height;
-		std::string **board;
+		std::vector< std::vector <std::string> > board;
 public:
 		Board(int width, int height);
 		~Board();
