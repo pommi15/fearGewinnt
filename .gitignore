@@ -4,5 +4,4 @@
 *.depend
 bin/*
 obj/*
-VS/*
 *.o

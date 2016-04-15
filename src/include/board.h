@@ -1,5 +1,5 @@
 /************************
-*								 0000	         *
+*			  	0000	        *
 *      fearGewinnt      *
 *         Game          *
 *          by           *
@@ -9,8 +9,8 @@
 *     Tobias WATZEK     *
 *        if15b038       *
 *************************/
-#ifndef SRC_INCLUDE_BOARD_H_
-#define SRC_INCLUDE_BOARD_H_
+#ifndef INCLUDE_BOARD_H_
+#define NCLUDE_BOARD_H_
 #include <string>
 #include <iostream>
 #include <vector>
@@ -28,4 +28,4 @@ public:
 		const void draw();
 };
 
-#endif  // SRC_INCLUDE_BOARD_H_
+#endif  // INCLUDE_BOARD_H_

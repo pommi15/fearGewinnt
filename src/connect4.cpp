@@ -1,5 +1,5 @@
 /************************
-*								 0000	         *
+*			  	0000	        *
 *      fearGewinnt      *
 *         Game          *
 *          by           *
@@ -10,7 +10,11 @@
 *        if15b038       *
 *************************/
 
+
+#include <string>
 #include <iostream>
+#include <vector>
+#include <fstream>
 
 #include "include/board.h"
 
@@ -29,10 +33,9 @@ int main() {
 		cout << "Enter height: " << std::endl;
 		cin >> height;
 
-		Board *fear = new Board(width, height);
+		Board * fear = new Board(width, height);
 		fear->draw();
 
-		delete fear;
 
 		return 0;
 }
