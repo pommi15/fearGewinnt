@@ -19,6 +19,7 @@ class Board {
 private:
 		int width;
 		int height;
+		std::string winner;
 		std::vector< std::vector <std::string> > board;
 public:
 		Board(int width, int height);
