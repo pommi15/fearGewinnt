@@ -17,7 +17,7 @@
 #include <fstream>
 
 #include "include/board.h"
-
+#include "include/players.h"
 
 using namespace std;
 
