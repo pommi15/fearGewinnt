@@ -15,19 +15,9 @@
 #include <iostream>
 #include <vector>
 
-class Board {
+class player {
 private:
-	int width;
-	int height;
-	std::string winner;
-	std::vector< std::vector <std::string> > board;
+  std::string name;
 public:
-	Board(int width, int height);
-	~Board();
-	bool coloumn_check();
-	bool drop(int coloumn);
-	const void draw();
-	bool win_check(int x, int y, std::string player);
-};
 
-#endif  // INCLUDE_BOARD_H_
+}
