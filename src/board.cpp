@@ -60,27 +60,34 @@ const void Board::draw(){
 				std::cout << std::endl;
 		}
 }
-bool Board::win_check(int x, int y, std::string player){
-		/*checkt NE tiles*/
-		if(this->board[x+1][y-1] == player)[
-			if(this->board[x+2][y-2] == player && this->board[x+3][y-3] == player){
-				return true;
-			}
-		/*checkt E tiles*/
-		]else if(this->board[x+1][y] == player){
-			if(this->board[x+2][y] == player && this->board[x+3][y] == player){
-				return true;
-			}
-		/*checkt SE tiles*/
-		}else if(this->board[x+1][y+1] == player){
-			if(this->board[x+2][y+2] == player && this->board[x+3][y+3] == player){
-				return true;
-			}
-		/*checkt S tiles*/
-		}else if(this->board[x][y+1] == player){
-			if(this->board[x][y+2] == player && this->board[x][y+3] == player){
-				return true;
-			}
-		}
+bool Board::win_check(int x, int y){
+	std::string player;
+	/*checks if given space even has a players stone in it*/
+	if(this->board[x][y] == '.'){
 		return false;
+	}else{
+		player = this->board[x][y];
 	}
+	/*checkt NE tiles*/
+	if(this->board[x+1][y-1] == player)[
+		if(this->board[x+2][y-2] == player && this->board[x+3][y-3] == player){
+			return true;
+		}
+	/*checkt E tiles*/
+	]else if(this->board[x+1][y] == player){
+		if(this->board[x+2][y] == player && this->board[x+3][y] == player){
+			return true;
+		}
+	/*checkt SE tiles*/
+	}else if(this->board[x+1][y+1] == player){
+		if(this->board[x+2][y+2] == player && this->board[x+3][y+3] == player){
+			return true;
+		}
+	/*checkt S tiles*/
+	}else if(this->board[x][y+1] == player){
+		if(this->board[x][y+2] == player && this->board[x][y+3] == player){
+			return true;
+		}
+	}
+	return false;
+}

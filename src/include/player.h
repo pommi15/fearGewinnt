@@ -9,8 +9,8 @@
 *     Tobias WATZEK     *
 *        if15b038       *
 *************************/
-#ifndef INCLUDE_BOARD_H_
-#define NCLUDE_BOARD_H_
+#ifndef INCLUDE_PLAYERS_H_
+#define INCLUDE_PLAYERS_H_
 #include <string>
 #include <iostream>
 #include <vector>
@@ -21,3 +21,4 @@ private:
 public:
 
 }
+#endif  // INCLUDE_PLAYERS_H_

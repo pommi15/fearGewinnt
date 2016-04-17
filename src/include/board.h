@@ -10,7 +10,7 @@
 *        if15b038       *
 *************************/
 #ifndef INCLUDE_BOARD_H_
-#define NCLUDE_BOARD_H_
+#define INCLUDE_BOARD_H_
 #include <string>
 #include <iostream>
 #include <vector>
