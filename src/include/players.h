@@ -15,10 +15,11 @@
 #include <iostream>
 #include <vector>
 
-class player {
+class Player {
 private:
   std::string name;
 public:
-
+  Player(const std::string name);
+  ~Player();
 }
 #endif  // INCLUDE_PLAYERS_H_

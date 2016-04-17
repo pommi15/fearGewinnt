@@ -60,6 +60,7 @@ const void Board::draw(){
 				std::cout << std::endl;
 		}
 }
+/*checks if there are 4 pieces in a row*/
 bool Board::win_check(int x, int y){
 	std::string player;
 	/*checks if given space even has a players stone in it*/
