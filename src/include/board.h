@@ -24,7 +24,7 @@ private:
 public:
 	Board(int width, int height);
 	~Board();
-	bool coloumn_check();
+	bool coloumn_check(int coloumn);
 	bool drop(int coloumn);
 	const void draw();
 	bool win_check(int x, int y, std::string player);

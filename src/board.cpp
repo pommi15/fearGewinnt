@@ -15,6 +15,9 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
+
+using namespace std;
+
 /* Constructor taking width and height */
 Board::Board(int width, int height){
 	std::vector< std::vector <std::string> > board;
@@ -23,17 +26,17 @@ Board::Board(int width, int height){
 		for(int j = 0; j < width; ++j){
 			board[i][j] = '.';
 		}
-		board[i][width]= std::to_string(i);
+		board[i][width]= i;
 	}
 	for(int i = 0; i < width; ++i){
-		board[i][height] = std::to_string(i+1);
+		board[i][height] = i+1;
 	}
 }
 /* Destructor */
 Board::~Board(){
 }
 /*Function checking if a coin may be dropped into a coloumn*/
-bool Board::coloumn_check(){
+bool Board::coloumn_check(coloumn){
 	if (this->board[coloumn][0] != '.') {
 			return false;
 	}
