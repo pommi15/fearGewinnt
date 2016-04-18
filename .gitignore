@@ -5,3 +5,5 @@
 bin/*
 obj/*
 *.o
+connect4
+
