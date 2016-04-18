@@ -2,27 +2,25 @@
 # Thomas Rauhofer and Tobias Watzek
 # OOOO
 
-OBJDIR=.
-OUTDIR=.
-SRCDIR=src
-VPATH=$(SRCDIR):$(OBJDIR)
 CC=g++
-CFLAGS=-g -Wall -O -std=c++11
+CFLAGS=-g -Wall -std=c++11
 
-all: directories fearGewinnt
+all: connect4
 
-fearGewinnt: connect4.o board.o
-	${CC} ${CFLAGS} $(OBJDIR)/connect4.o $(OBJDIR)/connect4.o -o $(OUTDIR)/fearGewinnt
+connect4: connect4.o board.o player.o humanplayer.o computerplayer.o
+	${CC} ${CFLAGS} connect4.o board.o player.o humanplayer.o computerplayer.o -o connect4
 
-connect4.o: connect4.cpp board.o
-	${CC} ${CFLAGS} -c $(SRCDIR)/connect4.cpp -o $(OBJDIR)/connect4.o
-board.o: board.cpp $(SRCDIR)/include/board.h
-	${CC} ${CFLAGS} -c $(SRCDIR)/board.cpp -o $(OBJDIR)/board.o
+connect4.o: connect4.cpp
+	${CC} ${CFLAGS} -c connect4.cpp -o connect4.o
+board.o: board.cpp
+	${CC} ${CFLAGS} -c board.cpp -o board.o
+player.o: player.cpp
+	${CC} ${CFLAGS} -c player.cpp -o player.o
+humanplayer.o: humanplayer.cpp
+	${CC} ${CFLAGS} -c humanplayer.cpp -o humanplayer.o
+computerplayer.o: computerplayer.cpp
+	${CC} ${CFLAGS} -c computerplayer.cpp -o computerplayer.o
 
 .PHONY: clean
 clean:
-	rm -f $(OBJDIR)/*.o fearGewinnt
-
-.PHONY: directories
-directories:
-	mkdir -p $(OBJDIR) $(OUTDIR)
+	rm -f *.o connect4

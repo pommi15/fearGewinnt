@@ -20,14 +20,14 @@ private:
 	int width;
 	int height;
 	std::string winner;
-	std::vector< std::vector <std::string> > board;
+	std::vector<std::vector<std::string>> board;
 public:
 	Board(int width, int height);
 	~Board();
-	bool coloumn_check(int coloumn);
-	bool drop(int coloumn);
-	const void draw();
-	bool win_check(int x, int y, std::string player);
+	bool column_check(int column) const;
+	void drop(int column);
+  void draw() const;
+	bool win_check(int x, int y, std::string player) const;
 };
 
 #endif  // INCLUDE_BOARD_H_

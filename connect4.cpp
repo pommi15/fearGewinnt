@@ -15,9 +15,11 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
-
-#include "include/board.h"
-#include "include/players.h"
+#include <memory>
+#include "board.h"
+#include "player.h"
+#include "humanplayer.h"
+#include "computerplayer.h"
 
 using namespace std;
 
@@ -33,9 +35,7 @@ int main() {
 		cout << "Enter height: " << std::endl;
 		cin >> height;
 
-		Board * fear = new Board(width, height);
+		std::unique_ptr<Board> fear(new Board(width, height));
 		fear->draw();
-
-
 		return 0;
 }
