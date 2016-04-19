@@ -25,18 +25,26 @@ using namespace std;
 
 
 int main() {
-		// Width of the board
-		int width = 0;
-		// Height of the board
-		int height = 0;
+	// Width of the board
+	int width = 0;
+	// Height of the board
+	int height = 0;
 
-		cout << "Enter width: " << std::endl;
-		cin >> width;
-		cout << "Enter height: " << std::endl;
-		cin >> height;
-		std::unique_ptr<Board> fear(new Board(width, height));
+	cout << "Enter width: " << std::endl;
+	cin >> width;
+	cout << "Enter height: " << std::endl;
+	cin >> height;
+	std::unique_ptr<Board> fear(new Board(width, height));
+	int input = 1;
+	while(input!=0){
 		fear->draw();
-		fear->drop(6);
-		fear->draw();
-		return 0;
+		do{
+			cin >> input;
+		}while(input < 0 || input >= width);
+		if(fear->column_check(input)){
+			fear->drop(input);
+		}
+	}
+	fear->draw();
+	return 0;
 }
