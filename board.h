@@ -27,7 +27,7 @@ public:
 	bool column_check(int column) const;
 	int drop(int column);
   void draw() const;
-	bool win_check(int x, int y, std::string player) const;
+	std::string win_check() const;
 };
 
 #endif  // INCLUDE_BOARD_H_

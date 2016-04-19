@@ -36,7 +36,7 @@ int main() {
 	cin >> height;
 	std::unique_ptr<Board> fear(new Board(width, height));
 	int input = 1;
-	while(input!=0){
+	while(fear->win_check() == "None"){
 		fear->draw();
 		do{
 			cin >> input;
@@ -46,5 +46,6 @@ int main() {
 		}
 	}
 	fear->draw();
+	cout << "And the Winner is: " << fear->win_check() << std::endl;
 	return 0;
 }
