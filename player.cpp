@@ -17,8 +17,8 @@
 #include "player.h"
 
 /* Constructor taking name */
-Player::Player(const std::string name){
-  this->name = name;
+Player::Player(const std::string coin){
+  this->coin = coin;
 }
 /* Destructor */
 Player::~Player(){

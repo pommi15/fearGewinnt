@@ -16,3 +16,11 @@
 
 #include "humanplayer.h"
 
+int Humanthrow(int boardWidth) {
+  int column;
+  while(column < 1 && column > boardwidth){
+    cout << "Please enter a column to play between 1 and " << boardWidth << endl;
+    cin >> column;
+  }
+  return column;
+}

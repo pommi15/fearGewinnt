@@ -34,6 +34,8 @@ int main() {
 	cin >> width;
 	cout << "Enter height: " << std::endl;
 	cin >> height;
+	std::unique_ptr<HumanPlayer> playa(new HumanPlayer);
+	playa->coin = "X";
 	std::unique_ptr<Board> fear(new Board(width, height));
 	int input = 1;
 	while(fear->win_check() == "None"){
@@ -42,7 +44,7 @@ int main() {
 			cin >> input;
 		}while(input < 0 || input >= width);
 		if(fear->column_check(input)){
-			fear->drop(input, "A");
+			fear->drop(input, playa->coin);
 		}
 	}
 	fear->draw();

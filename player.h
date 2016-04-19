@@ -17,9 +17,9 @@
 /*main class*/
 class Player {
 private:
-  std::string name;
+  std::string coin;
 public:
-  Player(const std::string name);
+  Player(const std::string coin);
   ~Player();
 };
 

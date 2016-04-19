@@ -20,7 +20,7 @@
 /*class for Computer players*/
 class ComputerPlayer: public Player {
 private:
-  std::string name;
+  std::string coin;
 public:
 };
 

@@ -18,8 +18,8 @@
 /*class for Human players*/
 class HumanPlayer: public Player {
 private:
-  std::string name;
-
+  std::string coin;
 public:
+  int human_drop();
 };
 #endif // INCLUDE_HUMANPLAYER_H_
