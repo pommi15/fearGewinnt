@@ -15,12 +15,20 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
+#define MAXBOARD 30
 
 using namespace std;
 
 /* Constructor taking width and height */
 Board::Board(int width, int height): width(width), height(height), winner("None") {
 	std::vector<std::vector<std::string>> tmp(height + 1);
+	/*if height or width are bigger than 100 they are set to 100*/
+	if(height >= MAXBOARD){
+		height = MAXBOARD;
+	}
+	if(width >= MAXBOARD){
+		width = MAXBOARD;
+	}
 	for(auto &row : tmp){
 		std::vector<std::string> tmp_row(width + 1);
 		row.swap(tmp_row);
@@ -32,7 +40,7 @@ Board::Board(int width, int height): width(width), height(height), winner("None"
     }
     this->board[y][width] = std::to_string(y + 1);
   }
-  for (int x = 0; x <= width; ++x) {
+  for (int x = 0; x < width; ++x) {
     this->board[height][x] = std::to_string(x + 1);
   }
 }
