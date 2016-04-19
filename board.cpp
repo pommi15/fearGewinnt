@@ -19,7 +19,7 @@
 using namespace std;
 
 /* Constructor taking width and height */
-Board::Board(int width, int height): width(width), height(height), winner("Bitch") {
+Board::Board(int width, int height): width(width), height(height), winner("None") {
 	std::vector<std::vector<std::string>> tmp(height + 1);
 	for(auto &row : tmp){
 		std::vector<std::string> tmp_row(width + 1);
@@ -59,8 +59,16 @@ void Board::draw() const {
     // Go through every column
     for (int x = 0; x <= this->width; ++x) {
       // Cout the pixel
-      std::cout << this->board[y][x];
-    }
+			if(this->width > 9 && y != this->height){
+      	std::cout << "  " << this->board[y][x];
+			}else{
+				if(this->board[y][x].size() == 1 || this->board[y][x] == "10"){
+					std::cout << " ";
+				}
+				std::cout << " " << this->board[y][x];
+
+			}
+		}
     // Print a linebreak after every row
     std::cout << std::endl;
   }
