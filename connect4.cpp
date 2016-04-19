@@ -34,8 +34,9 @@ int main() {
 		cin >> width;
 		cout << "Enter height: " << std::endl;
 		cin >> height;
-
 		std::unique_ptr<Board> fear(new Board(width, height));
+		fear->draw();
+		fear->drop(6);
 		fear->draw();
 		return 0;
 }

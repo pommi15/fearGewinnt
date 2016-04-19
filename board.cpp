@@ -48,13 +48,14 @@ Board::Board(int width, int height): width(width), height(height), winner("None"
 Board::~Board() {}
 /*Function checking if a coin may be dropped into a column*/
 bool Board::column_check(int column) const {
-  std::cout << this->board[0][column];
+  if(this->board[0][column] != "."){
+		return false;
+	}
   return true;
-  // return this->board[0][column].c_str() == '.';
 }
 /*Function for dropping in coins */
 void Board::drop(int column) {
-  for (int y = 0; y < height; ++y) {
+  for (int y = 0; y <= height; ++y) {
     if (this->board[y][column] != ".") {
       this->board[y - 1][column] = "X";
     }
