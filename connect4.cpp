@@ -42,7 +42,7 @@ int main() {
 			cin >> input;
 		}while(input < 0 || input >= width);
 		if(fear->column_check(input)){
-			fear->drop(input);
+			fear->drop(input, "A");
 		}
 	}
 	fear->draw();

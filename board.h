@@ -25,7 +25,7 @@ public:
 	Board(int width, int height);
 	~Board();
 	bool column_check(int column) const;
-	int drop(int column);
+	void drop(int column, std::string player);
   void draw() const;
 	std::string win_check() const;
 };

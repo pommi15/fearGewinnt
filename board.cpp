@@ -51,16 +51,13 @@ bool Board::column_check(int column) const {
   return this->board[0][column-1] == ".";
 }
 /*Function for dropping in coins */
-int Board::drop(int column) {
-	int coin;
+void Board::drop(int column, std::string player) {
   for (int y = 0; y <= height; ++y) {
     if (this->board[y][column-1] != ".") {
-      this->board[y - 1][column-1] = "X";
-			coin = y;
+      this->board[y - 1][column-1] = player;
 			break;
     }
 	}
-	return coin;
 }
 /*Function for drawing the board*/
 void Board::draw() const {
