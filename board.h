@@ -28,6 +28,7 @@ public:
 	void drop(int column, std::string player);
   void draw() const;
 	std::string win_check() const;
+	bool full_board_check() const;
 };
 
 #endif  // INCLUDE_BOARD_H_

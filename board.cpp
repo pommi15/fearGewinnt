@@ -126,3 +126,11 @@ std::string Board::win_check() const {
 	}
 	return "None";
 }
+bool Board::full_board_check() const {
+	for(int x = 0; x < width; ++x){
+		if(column_check(x)){
+			return false;
+		}
+	}
+	return true;
+}
