@@ -84,8 +84,10 @@ int main() {
 					fear->drop(choice, player2->coin_getter());
 				}
 			}
-			fear->draw();
-			cout << "And the Winner is: " << fear->win_check() << std::endl;
+			if(!full){
+				fear->draw();
+				cout << "And the Winner is: " << fear->win_check() << std::endl;
+			}
 		}else{
 			std::unique_ptr<HumanPlayer> player1(new HumanPlayer("A"));
 			std::unique_ptr<ComputerPlayer> player2(new ComputerPlayer("B"));
@@ -122,8 +124,10 @@ int main() {
 					fear->drop(choice, player2->coin_getter());
 				}
 			}
-			fear->draw();
-			cout << "And the Winner is: " << fear->win_check() << std::endl;
+			if(!full){
+				fear->draw();
+				cout << "And the Winner is: " << fear->win_check() << std::endl;
+			}
 		}
 	}else{
 		if(player_two == 1){
@@ -163,8 +167,10 @@ int main() {
 					fear->drop(choice, player2->coin_getter());
 				}
 			}
-			fear->draw();
-			cout << "And the Winner is: " << fear->win_check() << std::endl;
+			if(!full){
+				fear->draw();
+				cout << "And the Winner is: " << fear->win_check() << std::endl;
+			}
 		}else{
 			std::unique_ptr<ComputerPlayer> player1(new ComputerPlayer("A"));
 			std::unique_ptr<ComputerPlayer> player2(new ComputerPlayer("B"));
@@ -201,12 +207,14 @@ int main() {
 					fear->drop(choice, player2->coin_getter());
 				}
 			}
-			fear->draw();
-			cout << "And the Winner is: " << fear->win_check() << std::endl;
+			if(!full){
+				fear->draw();
+				cout << "And the Winner is: " << fear->win_check() << std::endl;
+			}
 		}
 	}
 	if(full){
-		cout << "The boad is full, nobody won. How sad" << endl;
+		cout << "The boad is full, nobody won. How sad..." << endl;
 	}
 
 	return 0;
