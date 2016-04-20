@@ -1,14 +1,14 @@
-/************************
-*			  	0000	        *
-*      fearGewinnt      *
-*         Game          *
-*          by           *
-*    Thomas RAUHOFER    *
-*        if15b029       *
-*          and          *
-*     Tobias WATZEK     *
-*        if15b038       *
-*************************/
+/*************************
+ *         0000          *
+ *      fearGewinnt      *
+ *         Game          *
+ *          by           *
+ *    Thomas RAUHOFER    *
+ *        if15b029       *
+ *          and          *
+ *     Tobias WATZEK     *
+ *        if15b038       *
+ *************************/
 #include "board.h"
 
 #include <string>
@@ -51,16 +51,13 @@ bool Board::column_check(int column) const {
   return this->board[0][column-1] == ".";
 }
 /*Function for dropping in coins */
-int Board::drop(int column) {
-	int coin;
+void Board::drop(int column, std::string player) {
   for (int y = 0; y <= height; ++y) {
     if (this->board[y][column-1] != ".") {
-      this->board[y - 1][column-1] = "X";
-			coin = y;
+      this->board[y - 1][column-1] = player;
 			break;
     }
 	}
-	return coin;
 }
 /*Function for drawing the board*/
 void Board::draw() const {
@@ -84,35 +81,48 @@ void Board::draw() const {
   }
 }
 /*checks if there are 4 pieces in a row*/
-bool Board::win_check(int x, int y, std::string player) const {
+std::string Board::win_check() const {
+	std::string winner;
   /*checks if given space even has a players stone in it*/
-  if (this->board[y][x] == ".") {
-    return false;
-  } else {
-    player = this->board[y][x];
-  }
-  /*checkt NE tiles*/
-  if (this->board[y + 1][x - 1] == player) {
-    if (this->board[y + 2][x - 2] == player &&
-        this->board[y + 3][x - 3] == player) {
-      return true;
-    }
-    /*checkt E tiles*/
-  } else if (this->board[y + 1][x] == player) {
-    if (this->board[y + 2][x] == player && this->board[y + 3][x] == player) {
-      return true;
-    }
-    /*checkt SE tiles*/
-  } else if (this->board[y + 1][x + 1] == player) {
-    if (this->board[y + 2][x + 2] == player &&
-        this->board[y + 3][x + 3] == player) {
-      return true;
-    }
-    /*checkt S tiles*/
-  } else if (this->board[y][x + 1] == player) {
-    if (this->board[y][x + 2] == player && this->board[y][x + 3] == player) {
-      return true;
-    }
-  }
-  return false;
+	for (int y = 0; y < height; ++y) {
+    for (int x = 0; x < width; ++x) {
+			if (this->board[y][x] != ".") {
+				winner = this->board[y][x];
+				if(x>2 && (y-3) < height){
+					/*checkt SW tiles*/
+				  if (this->board[y + 1][x - 1] == winner) {
+				    if (this->board[y + 2][x - 2] == winner &&
+				        this->board[y + 3][x - 3] == winner) {
+				      return winner;
+				    }
+					}
+				}
+				if((y + 3) < height){
+				  /*checkt S tiles*/
+					if (this->board[y + 1][x] == winner) {
+				    if (this->board[y + 2][x] == winner && this->board[y + 3][x] == winner) {
+				      return winner;
+				    }
+					}
+				}
+				if((y + 3) < height && (x + 3) < width){
+				  /*checkt SE tiles*/
+					if (this->board[y + 1][x + 1] == winner) {
+				    if (this->board[y + 2][x + 2] == winner && this->board[y + 3][x + 3] == winner) {
+				      return winner;
+				    }
+					}
+				}
+				if((x + 3) < width){
+				  /*checkt W tiles*/
+					if (this->board[y][x + 1] == winner) {
+				    if (this->board[y][x + 2] == winner && this->board[y][x + 3] == winner) {
+				      return winner;
+				    }
+				  }
+				}
+			}
+		}
+	}
+	return "None";
 }
