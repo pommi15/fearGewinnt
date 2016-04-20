@@ -54,23 +54,25 @@ int main() {
 			std::unique_ptr<Board> fear(new Board(width, height));
 
 			while(fear->win_check() == "None"){
+				/*Player A drops first*/
 				cout << "Player A:" << endl;
 				fear->draw();
 				int choice = player1->drop_choice(width);
-				if(fear->column_check(choice)){
-					fear->drop(choice, player1->coin_getter());
-				}else{
+				while(fear->column_check(choice) == false){
 					cout << "Not a valid choice" << endl;
+					choice = player1->drop_choice(width);
 				}
+				fear->drop(choice, player1->coin_getter());
+				/*Player 2 drops second*/
 				if(fear->win_check() == "None"){
 					cout << "Player B:" << endl;
 					fear->draw();
 					int choice = player2->drop_choice(width);
-					if(fear->column_check(choice)){
-						fear->drop(choice, player2->coin_getter());
-					}else{
+					while(fear->column_check(choice) == false){
 						cout << "Not a valid choice" << endl;
+						choice = player1->drop_choice(width);
 					}
+					fear->drop(choice, player2->coin_getter());
 				}
 			}
 			fear->draw();
