@@ -20,7 +20,7 @@ class HumanPlayer : public Player {
 public:
   HumanPlayer(const std::string &coin);
   virtual ~HumanPlayer();
-  int human_drop(int boardwidth);
+  int drop_choice(int boardwidth);
   std::string coin_getter();
 };
 #endif // INCLUDE_HUMANPLAYER_H_

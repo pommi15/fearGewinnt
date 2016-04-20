@@ -15,18 +15,24 @@
 #include <fstream>
 
 #include "computerplayer.h"
-ComputerPlayer::ComputerPlayer(const char coin){
+
+using namespace std;
+
+ComputerPlayer::ComputerPlayer(const std::string coin) : Player(coin){
   this->coin = coin;
 }
 /* Destructor */
 ComputerPlayer::~ComputerPlayer(){
 }
 
-int human_drop(int boardwidth) {
+int drop_choice(int boardwidth) {
   int column;
   while(column < 0 && column > boardwidth){
     cout << "Please enter a column to play between 1 and " << boardwidth << endl;
     cin >> column;
   }
   return column;
+}
+std::string ComputerPlayer::coin_getter(){
+  return this->coin;
 }

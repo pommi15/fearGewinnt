@@ -15,17 +15,19 @@
 #include <fstream>
 
 #include "humanplayer.h"
+
+using namespace std;
 /* Constructor */
-HumanPlayer::HumanPlayer(const std::string &coin){
+HumanPlayer::HumanPlayer(const std::string &coin) : Player(coin){
   this->coin = coin;
 }
 /* Destructor */
 HumanPlayer::~HumanPlayer(){
 }
 
-int HumanPlayer::human_drop(int boardwidth) {
-  int column;
-  while(column < 0 && column > boardwidth){
+int HumanPlayer::drop_choice(int boardwidth) {
+  int column = boardwidth + 1;
+  while(column < 1 || column > boardwidth){
     cout << "Please enter a column to play between 1 and " << boardwidth << endl;
     cin >> column;
   }
