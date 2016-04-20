@@ -34,8 +34,7 @@ int main() {
 	cin >> width;
 	cout << "Enter height: " << std::endl;
 	cin >> height;
-	std::unique_ptr<HumanPlayer> playa(new HumanPlayer);
-	playa->coin = "X";
+	HumanPlayer playa = new HumanPlayer("X");
 	std::unique_ptr<Board> fear(new Board(width, height));
 	int input = 1;
 	while(fear->win_check() == "None"){

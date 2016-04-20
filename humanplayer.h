@@ -20,6 +20,8 @@ class HumanPlayer: public Player {
 private:
   std::string coin;
 public:
-  int human_drop();
+  HumanPlayer(const char coin);
+  ~HumanPlayer();
+  int human_drop(int boardwidth);
 };
 #endif // INCLUDE_HUMANPLAYER_H_

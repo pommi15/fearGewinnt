@@ -15,11 +15,17 @@
 #include <fstream>
 
 #include "humanplayer.h"
+HumanPlayer::HumanPlayer(const char coin){
+  this->coin = coin;
+}
+/* Destructor */
+HumanPlayer::~HumanPlayer(){
+}
 
-int Humanthrow(int boardWidth) {
+int human_drop(int boardwidth) {
   int column;
   while(column < 1 && column > boardwidth){
-    cout << "Please enter a column to play between 1 and " << boardWidth << endl;
+    cout << "Please enter a column to play between 1 and " << boardwidth << endl;
     cin >> column;
   }
   return column;
