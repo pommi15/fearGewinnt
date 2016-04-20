@@ -15,7 +15,6 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
-#define MAXBOARD 30
 
 using namespace std;
 
@@ -23,12 +22,6 @@ using namespace std;
 Board::Board(int width, int height): width(width), height(height), winner("None") {
 	std::vector<std::vector<std::string>> tmp(height + 1);
 	/*if height or width are bigger than 100 they are set to 100*/
-	if(height >= MAXBOARD){
-		height = MAXBOARD;
-	}
-	if(width >= MAXBOARD){
-		width = MAXBOARD;
-	}
 	for(auto &row : tmp){
 		std::vector<std::string> tmp_row(width + 1);
 		row.swap(tmp_row);
@@ -128,7 +121,7 @@ std::string Board::win_check() const {
 }
 bool Board::full_board_check() const {
 	for(int x = 0; x < width; ++x){
-		if(column_check(x)){
+		if(column_check(x+1)){
 			return false;
 		}
 	}

@@ -25,19 +25,31 @@ using namespace std;
 
 
 int main() {
-	// Width of the board
+	/* Width of the board */
 	int width = 0;
-	// Height of the board
+	/* Height of the board */
 	int height = 0;
+	/* int value to chose player A */
 	int player_one = 10;
+	/* int value to chose player B */
 	int player_two = 10;
+	/* bool for fullness of board*/
 	bool full = false;
+	/* entering the width and the height of our board */
 	cout << "Enter width: " << std::endl;
 	cin >> width;
+	while(width > 30){
+		cout << "A width of " << width << " is a little big..." << endl;
+		cout << "Please enter a smaller number." << endl;
+	}
 	cout << "Enter height: " << std::endl;
 	cin >> height;
-	cout << "Who is the first player?" << std::endl;
+	while(height > 30){
+		cout << "A height of " << height << " is a little big..." << endl;
+		cout << "Please enter a smaller number." << endl;
+	}
 	/* choice of player pairings */
+	cout << "Who is the first player?" << std::endl;
 	while(player_one < 1 || player_one > 2){
 		cout << "Press 1 for Human 2 for Computer!" << std::endl;
 		cin >> player_one;
@@ -47,6 +59,7 @@ int main() {
 		cout << "Press 1 for Human 2 for Computer!" << std::endl;
 		cin >> player_two;
 	}
+	/* check which player combination was chosen */
 	if(player_one == 1){
 		if(player_two == 1){
 			std::unique_ptr<HumanPlayer> player1(new HumanPlayer("A"));
@@ -59,29 +72,31 @@ int main() {
 				cout << "Player A:" << endl;
 				fear->draw();
 				int choice = player1->drop_choice(width);
-				if(fear->full_board_check()){
-					full = true;
-					break;
-				}
 				while(fear->column_check(choice) == false){
 					cout << "Not a valid choice" << endl;
 					choice = player1->drop_choice(width);
 				}
 				fear->drop(choice, player1->coin_getter());
+				if(fear->full_board_check()){
+					full = true;
+					fear->draw();
+					break;
+				}
 				/*Player B drops second*/
 				if(fear->win_check() == "None"){
 					cout << "Player B:" << endl;
 					fear->draw();
 					int choice = player2->drop_choice(width);
-					if(fear->full_board_check()){
-						full = true;
-						break;
-					}
 					while(fear->column_check(choice) == false){
 						cout << "Not a valid choice" << endl;
 						choice = player1->drop_choice(width);
 					}
 					fear->drop(choice, player2->coin_getter());
+					if(fear->full_board_check()){
+						full = true;
+						fear->draw();
+						break;
+					}
 				}
 			}
 			if(!full){
@@ -100,28 +115,30 @@ int main() {
 				cout << "Player A:" << endl;
 				fear->draw();
 				int choice = player1->drop_choice(width);
-				if(fear->full_board_check()){
-					full = true;
-					break;
-				}
 				while(fear->column_check(choice) == false){
 					cout << "Not a valid choice" << endl;
 					choice = player1->drop_choice(width);
 				}
 				fear->drop(choice, player1->coin_getter());
+				if(fear->full_board_check()){
+					full = true;
+					fear->draw();
+					break;
+				}
 				/*Player B drops second*/
 				if(fear->win_check() == "None"){
 					cout << "Player B:" << endl;
 					fear->draw();
 					int choice = player2->drop_choice(width);
-					if(fear->full_board_check()){
-						full = true;
-						break;
-					}
 					while(fear->column_check(choice) == false){
 						choice = player2->drop_choice(width);
 					}
 					fear->drop(choice, player2->coin_getter());
+					if(fear->full_board_check()){
+						full = true;
+						fear->draw();
+						break;
+					}
 				}
 			}
 			if(!full){
@@ -142,29 +159,31 @@ int main() {
 				cout << "Player A:" << endl;
 				fear->draw();
 				int choice = player1->drop_choice(width);
-				if(fear->full_board_check()){
-					full = true;
-					break;
-				}
 				while(fear->column_check(choice) == false){
 
 					choice = player1->drop_choice(width);
 				}
 				fear->drop(choice, player1->coin_getter());
+				if(fear->full_board_check()){
+					full = true;
+					fear->draw();
+					break;
+				}
 				/*Player B drops second*/
 				if(fear->win_check() == "None"){
 					cout << "Player B:" << endl;
 					fear->draw();
 					int choice = player2->drop_choice(width);
-					if(fear->full_board_check()){
-						full = true;
-						break;
-					}
 					while(fear->column_check(choice) == false){
 						cout << "Not a valid choice" << endl;
 						choice = player2->drop_choice(width);
 					}
 					fear->drop(choice, player2->coin_getter());
+					if(fear->full_board_check()){
+						full = true;
+						fear->draw();
+						break;
+					}
 				}
 			}
 			if(!full){
@@ -183,28 +202,31 @@ int main() {
 				cout << "Player A:" << endl;
 				fear->draw();
 				int choice = player1->drop_choice(width);
-				if(fear->full_board_check()){
-					full = true;
-					break;
-				}
 				while(fear->column_check(choice) == false){
 
 					choice = player1->drop_choice(width);
 				}
 				fear->drop(choice, player1->coin_getter());
+				if(fear->full_board_check()){
+					full = true;
+					fear->draw();
+					break;
+				}
 				/*Player B drops second*/
 				if(fear->win_check() == "None"){
 					cout << "Player B:" << endl;
 					fear->draw();
 					int choice = player2->drop_choice(width);
-					if(fear->full_board_check()){
-						full = true;
-						break;
-					}
+
 					while(fear->column_check(choice) == false){
 						choice = player2->drop_choice(width);
 					}
 					fear->drop(choice, player2->coin_getter());
+					if(fear->full_board_check()){
+						full = true;
+						fear->draw();
+						break;
+					}
 				}
 			}
 			if(!full){
@@ -214,7 +236,7 @@ int main() {
 		}
 	}
 	if(full){
-		cout << "The boad is full, nobody won. How sad..." << endl;
+		cout << "The board is full, nobody won. How sad..." << endl;
 	}
 
 	return 0;
