@@ -25,12 +25,8 @@ ComputerPlayer::ComputerPlayer(const std::string coin) : Player(coin){
 ComputerPlayer::~ComputerPlayer(){
 }
 
-int drop_choice(int boardwidth) {
-  int column;
-  while(column < 0 && column > boardwidth){
-    cout << "Please enter a column to play between 1 and " << boardwidth << endl;
-    cin >> column;
-  }
+int ComputerPlayer::drop_choice(int boardwidth) {
+  int column = rand() % boardwidth;
   return column;
 }
 std::string ComputerPlayer::coin_getter(){

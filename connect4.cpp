@@ -63,7 +63,7 @@ int main() {
 					choice = player1->drop_choice(width);
 				}
 				fear->drop(choice, player1->coin_getter());
-				/*Player 2 drops second*/
+				/*Player B drops second*/
 				if(fear->win_check() == "None"){
 					cout << "Player B:" << endl;
 					fear->draw();
@@ -80,14 +80,96 @@ int main() {
 		}else{
 			std::unique_ptr<HumanPlayer> player1(new HumanPlayer("A"));
 			std::unique_ptr<ComputerPlayer> player2(new ComputerPlayer("B"));
+
+			/* board is created */
+			std::unique_ptr<Board> fear(new Board(width, height));
+
+			while(fear->win_check() == "None"){
+				/*Player A drops first*/
+				cout << "Player A:" << endl;
+				fear->draw();
+				int choice = player1->drop_choice(width);
+				while(fear->column_check(choice) == false){
+					cout << "Not a valid choice" << endl;
+					choice = player1->drop_choice(width);
+				}
+				fear->drop(choice, player1->coin_getter());
+				/*Player B drops second*/
+				if(fear->win_check() == "None"){
+					cout << "Player B:" << endl;
+					fear->draw();
+					int choice = player2->drop_choice(width);
+					while(fear->column_check(choice) == false){
+						choice = player2->drop_choice(width);
+					}
+					fear->drop(choice, player2->coin_getter());
+				}
+			}
+			fear->draw();
+			cout << "And the Winner is: " << fear->win_check() << std::endl;
 		}
 	}else{
 		if(player_two == 1){
 			std::unique_ptr<ComputerPlayer> player1(new ComputerPlayer("A"));
 			std::unique_ptr<HumanPlayer> player2(new HumanPlayer("B"));
+
+			/* board is created */
+			std::unique_ptr<Board> fear(new Board(width, height));
+
+			while(fear->win_check() == "None"){
+				/*Player A drops first*/
+				cout << "Player A:" << endl;
+				fear->draw();
+				int choice = player1->drop_choice(width);
+				while(fear->column_check(choice) == false){
+
+					choice = player1->drop_choice(width);
+				}
+				fear->drop(choice, player1->coin_getter());
+				/*Player B drops second*/
+				if(fear->win_check() == "None"){
+					cout << "Player B:" << endl;
+					fear->draw();
+					int choice = player2->drop_choice(width);
+					while(fear->column_check(choice) == false){
+						cout << "Not a valid choice" << endl;
+						choice = player2->drop_choice(width);
+					}
+					fear->drop(choice, player2->coin_getter());
+				}
+			}
+			fear->draw();
+			cout << "And the Winner is: " << fear->win_check() << std::endl;
 		}else{
 			std::unique_ptr<ComputerPlayer> player1(new ComputerPlayer("A"));
 			std::unique_ptr<ComputerPlayer> player2(new ComputerPlayer("B"));
+
+			/* board is created */
+			std::unique_ptr<Board> fear(new Board(width, height));
+
+			while(fear->win_check() == "None"){
+				/*Player A drops first*/
+				cout << "Player A:" << endl;
+				fear->draw();
+				int choice = player1->drop_choice(width);
+				while(fear->column_check(choice) == false){
+
+					choice = player1->drop_choice(width);
+				}
+				fear->drop(choice, player1->coin_getter());
+				/*Player B drops second*/
+				if(fear->win_check() == "None"){
+					cout << "Player B:" << endl;
+					fear->draw();
+					int choice = player2->drop_choice(width);
+					while(fear->column_check(choice) == false){
+						choice = player2->drop_choice(width);
+					}
+					fear->drop(choice, player2->coin_getter());
+				}
+			}
+			fear->draw();
+			cout << "And the Winner is: " << fear->win_check() << std::endl;
 		}
 	}
 
