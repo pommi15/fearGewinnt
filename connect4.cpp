@@ -1,14 +1,14 @@
-/************************
-*			 	  0000          *
-*      fearGewinnt      *
-*         Game          *
-*          by           *
-*    Thomas RAUHOFER    *
-*        if15b029       *
-*          and          *
-*     Tobias WATZEK     *
-*        if15b038       *
-*************************/
+/*************************
+ *         0000          *
+ *      fearGewinnt      *
+ *         Game          *
+ *          by           *
+ *    Thomas RAUHOFER    *
+ *        if15b029       *
+ *          and          *
+ *     Tobias WATZEK     *
+ *        if15b038       *
+ *************************/
 
 
 #include <string>
@@ -34,7 +34,7 @@ int main() {
 	cin >> width;
 	cout << "Enter height: " << std::endl;
 	cin >> height;
-	HumanPlayer playa = new HumanPlayer("X");
+	std::unique_ptr<HumanPlayer> playa(new HumanPlayer("A"));
 	std::unique_ptr<Board> fear(new Board(width, height));
 	int input = 1;
 	while(fear->win_check() == "None"){
@@ -43,7 +43,7 @@ int main() {
 			cin >> input;
 		}while(input < 0 || input >= width);
 		if(fear->column_check(input)){
-			fear->drop(input, playa->coin);
+			fear->drop(input, playa->coin_getter());
 		}
 	}
 	fear->draw();
