@@ -26,7 +26,7 @@ ComputerPlayer::~ComputerPlayer(){
 }
 
 int ComputerPlayer::drop_choice(int boardwidth) {
-  int column = rand() % boardwidth;
+  int column = rand() % boardwidth + 1;
   return column;
 }
 std::string ComputerPlayer::coin_getter(){
