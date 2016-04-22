@@ -18,21 +18,15 @@
 
 using namespace std;
 /* Constructor */
-HumanPlayer::HumanPlayer(const std::string &coin) : Player(coin){
-  this->coin = coin;
-}
-/* Destructor */
-HumanPlayer::~HumanPlayer(){
-}
+HumanPlayer::HumanPlayer(const std::string &coin) : Player(coin) {}
 
 int HumanPlayer::drop_choice(int boardwidth) {
   int column = boardwidth + 1;
-  while(column < 1 || column > boardwidth){
-    cout << "Please enter a column to play between 1 and " << boardwidth << endl;
+  while (column < 1 || column > boardwidth) {
+    cout << "Please enter a column to play between 1 and " << boardwidth
+         << endl;
     cin >> column;
   }
   return column;
 }
-std::string HumanPlayer::coin_getter(){
-  return this->coin;
-}
+std::string HumanPlayer::coin_getter() { return this->coin; }

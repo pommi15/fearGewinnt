@@ -1,14 +1,14 @@
 /*************************
- *         0000          *
- *      fearGewinnt      *
- *         Game          *
- *          by           *
- *    Thomas RAUHOFER    *
- *        if15b029       *
- *          and          *
- *     Tobias WATZEK     *
- *        if15b038       *
- *************************/
+*         0000          *
+*      fearGewinnt      *
+*         Game          *
+*          by           *
+*    Thomas RAUHOFER    *
+*        if15b029       *
+*          and          *
+*     Tobias WATZEK     *
+*        if15b038       *
+*************************/
 #include "board.h"
 
 #include <string>
@@ -19,111 +19,163 @@
 using namespace std;
 
 /* Constructor taking width and height */
-Board::Board(int width, int height): width(width), height(height), winner("None") {
-	std::vector<std::vector<std::string>> tmp(height + 1);
-	/*if height or width are bigger than 100 they are set to 100*/
-	for(auto &row : tmp){
-		std::vector<std::string> tmp_row(width + 1);
-		row.swap(tmp_row);
-	}
-	this->board.swap(tmp);
-  for (int y = 0; y < height; ++y) {
-    for (int x = 0; x < width; ++x) {
-      this->board[y][x] = ".";
-    }
-    this->board[y][width] = std::to_string(y + 1);
+Board::Board(int width, int height)
+    : width(width), height(height), winner("None") {
+  /** Create a tmp 2d vector */
+  std::vector<std::vector<std::string>> tmp(height + 1);
+  /** Loop trough the rows of the tmp vector */
+  for (auto& row : tmp) {
+    /**
+    * Create a tmp row with the entered width plus one
+    * for the numbering and fill with dots
+    */
+    std::vector<std::string> tmp_row(width + 1, ".");
+    /** replace the row with the tmp row */
+    row.swap(tmp_row);
   }
-  for (int x = 0; x < width; ++x) {
-    this->board[height][x] = std::to_string(x + 1);
+  /** swap the board with the tmp board */
+  this->board.swap(tmp);
+  /** Counter variable */
+  int y_count = 1;
+  /** Loop through the rows of the board */
+  for (auto& row : this->board) {
+    /** Add the row numbering to the board */
+    if (y_count <= this->height) {
+      row[width] = std::to_string(y_count);
+    } else {
+      /** Loop through the columns to add the numbering */
+      for (int x = 0; x < width; ++x) {
+        row[x] = std::to_string(x + 1);
+      }
+      /** Last  column is empty string */
+      row[width] = "";
+    }
+    /** increment the countera */
+    ++y_count;
   }
 }
-/* Destructor */
-Board::~Board() {}
-/*Function checking if a coin may be dropped into a column*/
+/**
+* Function checking if a coin may be dropped into a column
+* @param  column number of the column
+* @return boolean true if space is available
+*/
 bool Board::column_check(int column) const {
-  return this->board[0][column-1] == ".";
+  /** Check if the cell on the top is marked empty */
+  return this->board[0][column - 1] == ".";
 }
-/*Function for dropping in coins */
-void Board::drop(int column, std::string player) {
-  for (int y = 0; y <= height; ++y) {
-    if (this->board[y][column-1] != ".") {
-      this->board[y - 1][column-1] = player;
-			break;
-    }
-	}
-}
-/*Function for drawing the board*/
-void Board::draw() const {
-  // Go through every row
-  for (int y = 0; y <= this->height; ++y) {
-    // Go through every column
-    for (int x = 0; x <= this->width; ++x) {
-      // Cout the pixel
-			if(this->width > 9 && y != this->height){
-      	std::cout << "  " << this->board[y][x];
-			}else{
-				if(this->board[y][x].size() == 1 || this->board[y][x] == "10"){
-					std::cout << " ";
-				}
-				std::cout << " " << this->board[y][x];
 
-			}
-		}
-    // Print a linebreak after every row
+/**
+* Function to drop coins into the board
+* @param column column to drop the coin in
+* @param player player who dropped the coin
+*/
+void Board::drop(int column, std::string player) {
+  /** decrease the column by one */
+  --column;
+  /** loop through the rows */
+  for (int y = 0; y <= height; ++y) {
+    /** Check if the space is empty */
+    if (this->board[y][column] != ".") {
+      /** set the flag of the player */
+      this->board[y - 1][column] = player;
+      /** leave the loop */
+      break;
+    }
+  }
+}
+/**
+* Print the board to the screen
+*/
+void Board::draw() const {
+  /** loop through the rows */
+  for (auto& row : this->board) {
+    /** loop through the columns of the row */
+    for (int x = 0; x <= this->width; ++x) {
+      /** not a single digit -> prepend with 1 space */
+      if (row[x].size() > 1) {
+        std::cout << " ";
+      } else {
+        /** single digit -> prepend with two spaces */
+        std::cout << "  ";
+      }
+      /** print the cell */
+      std::cout << row[x];
+    }
+    /** linebreak after the row */
     std::cout << std::endl;
   }
 }
-/*checks if there are 4 pieces in a row*/
+
+/**
+* Check if there are four coins in a row
+* @return winner
+*/
 std::string Board::win_check() const {
-	std::string winner;
-  /*checks if given space even has a players stone in it*/
-	for (int y = 0; y < height; ++y) {
+  /** winner flag */
+  std::string winner;
+  /** loop through the rows */
+  for (int y = 0; y < height; ++y) {
+    /** loop through the columns */
     for (int x = 0; x < width; ++x) {
-			if (this->board[y][x] != ".") {
-				winner = this->board[y][x];
-				if(x>2 && (y-3) < height){
-					/*checkt SW tiles*/
-				  if (this->board[y + 1][x - 1] == winner) {
-				    if (this->board[y + 2][x - 2] == winner &&
-				        this->board[y + 3][x - 3] == winner) {
-				      return winner;
-				    }
-					}
-				}
-				if((y + 3) < height){
-				  /*checkt S tiles*/
-					if (this->board[y + 1][x] == winner) {
-				    if (this->board[y + 2][x] == winner && this->board[y + 3][x] == winner) {
-				      return winner;
-				    }
-					}
-				}
-				if((y + 3) < height && (x + 3) < width){
-				  /*checkt SE tiles*/
-					if (this->board[y + 1][x + 1] == winner) {
-				    if (this->board[y + 2][x + 2] == winner && this->board[y + 3][x + 3] == winner) {
-				      return winner;
-				    }
-					}
-				}
-				if((x + 3) < width){
-				  /*checkt W tiles*/
-					if (this->board[y][x + 1] == winner) {
-				    if (this->board[y][x + 2] == winner && this->board[y][x + 3] == winner) {
-				      return winner;
-				    }
-				  }
-				}
-			}
-		}
-	}
-	return "None";
+      /** current cell is not empty */
+      if (this->board[y][x] != ".") {
+        /** set the winner to the current position */
+        winner = this->board[y][x];
+        /** check SW cells */
+        /** check if still in the board */
+        if (x > 2 && (y - 3) < height) {
+          if (this->board[y + 1][x - 1] == winner &&
+              this->board[y + 2][x - 2] == winner &&
+              this->board[y + 3][x - 3] == winner) {
+            return winner;
+          }
+        }
+        /** check S cells */
+        /** check if still in the board */
+        if ((y + 3) < height) {
+          if (this->board[y + 1][x] == winner &&
+              this->board[y + 2][x] == winner &&
+              this->board[y + 3][x] == winner) {
+            return winner;
+          }
+        }
+
+        /** check SE cells */
+        if ((y + 3) < height && (x + 3) < width) {
+          if (this->board[y + 1][x + 1] == winner &&
+              this->board[y + 2][x + 2] == winner &&
+              this->board[y + 3][x + 3] == winner) {
+            return winner;
+          }
+        }
+
+        /** check W tiles */
+        if ((x + 3) < width) {
+          if (this->board[y][x + 1] == winner &&
+              this->board[y][x + 2] == winner &&
+              this->board[y][x + 3] == winner) {
+            return winner;
+          }
+        }
+      }
+    }
+  }
+  return "None";
 }
+
+/**
+ * Check if board is full
+ * @return boolean true if it is full
+ */
 bool Board::full_board_check() const {
-	for(int x = 0; x < width; ++x){
-		if(column_check(x+1)){
-			return false;
-		}
-	}
-	return true;
+  /** loop through the columns */
+  for (int x = 0; x < width; ++x) {
+    /** check if column is free */
+    if (column_check(x + 1)) {
+      /** board is not full */
+      return false;
+    }
+  }
+  /** board is full */
+  return true;
 }

@@ -23,7 +23,6 @@ private:
 	std::vector<std::vector<std::string>> board;
 public:
 	Board(int width, int height);
-	~Board();
 	bool column_check(int column) const;
 	void drop(int column, std::string player);
   void draw() const;

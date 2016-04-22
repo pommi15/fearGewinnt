@@ -19,7 +19,6 @@
 class HumanPlayer : public Player {
 public:
   HumanPlayer(const std::string &coin);
-  virtual ~HumanPlayer();
   int drop_choice(int boardwidth);
   std::string coin_getter();
 };

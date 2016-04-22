@@ -21,7 +21,6 @@
 class ComputerPlayer : public Player {
 public:
   ComputerPlayer(const std::string coin);
-  virtual ~ComputerPlayer();
   int drop_choice(int boardwidth);
   std::string coin_getter();
 };

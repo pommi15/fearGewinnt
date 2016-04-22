@@ -18,17 +18,9 @@
 
 using namespace std;
 
-ComputerPlayer::ComputerPlayer(const std::string coin) : Player(coin){
-  this->coin = coin;
-}
-/* Destructor */
-ComputerPlayer::~ComputerPlayer(){
-}
-
+ComputerPlayer::ComputerPlayer(const std::string coin) : Player(coin) {}
 int ComputerPlayer::drop_choice(int boardwidth) {
   int column = rand() % boardwidth + 1;
   return column;
 }
-std::string ComputerPlayer::coin_getter(){
-  return this->coin;
-}
+std::string ComputerPlayer::coin_getter() { return this->coin; }

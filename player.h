@@ -20,7 +20,6 @@ protected:
   std::string coin;
 public:
   Player(const std::string &coin);
-  virtual ~Player();
   std::string coin_getter();
 };
 
