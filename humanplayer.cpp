@@ -11,22 +11,27 @@
  *************************/
 #include <string>
 #include <iostream>
-#include <vector>
-#include <fstream>
+
 
 #include "humanplayer.h"
 
-using namespace std;
-/* Constructor */
+/**
+ * Constructor inherited from Player class
+ */
 HumanPlayer::HumanPlayer(const std::string &coin) : Player(coin) {}
 
+/**
+ * Get the column in which the player would like to drop his coin.
+ * @param  boardwidth width of the board
+ * @return            column
+ */
 int HumanPlayer::drop_choice(int boardwidth) {
-  int column = boardwidth + 1;
-  while (column < 1 || column > boardwidth) {
-    cout << "Please enter a column to play between 1 and " << boardwidth
-         << endl;
-    cin >> column;
+  int column = 0;
+  /** user has to enter a column between 1 and boardwidth */
+  while (column < 1 || boardwidth < column) {
+    std::cout << "Please enter a column to play between 1 and ";
+    std::cout << boardwidth << std::endl;
+    std::cin >> column;
   }
   return column;
 }
-std::string HumanPlayer::coin_getter() { return this->coin; }

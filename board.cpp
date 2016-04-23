@@ -9,18 +9,17 @@
 *     Tobias WATZEK     *
 *        if15b038       *
 *************************/
-#include "board.h"
-
 #include <string>
 #include <iostream>
 #include <vector>
-#include <fstream>
+
+#include "board.h"
 
 using namespace std;
 
 /* Constructor taking width and height */
 Board::Board(int width, int height)
-    : width(width), height(height), winner("None") {
+    : width(width), height(height), winner("") {
   /** Create a tmp 2d vector */
   std::vector<std::vector<std::string>> tmp(height + 1);
   /** Loop trough the rows of the tmp vector */
@@ -160,7 +159,7 @@ std::string Board::win_check() const {
       }
     }
   }
-  return "None";
+  return "";
 }
 
 /**
@@ -178,4 +177,12 @@ bool Board::full_board_check() const {
   }
   /** board is full */
   return true;
+}
+
+/**
+ * Get the width of the board
+ * @return width of board
+ */
+int Board::get_width() const {
+  return this->width;
 }

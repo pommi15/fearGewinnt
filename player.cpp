@@ -16,6 +16,12 @@
 
 #include "player.h"
 
-/* Constructor taking name */
-Player::Player(const std::string &coin) : coin(coin) {}
-std::string Player::coin_getter() { return this->coin; }
+/**
+ * Constructor taking coin of the player
+ */
+Player::Player(const std::string& coin) : coin(coin) {}
+/** Get the coin of the player */
+std::string Player::get_coin() {
+  return this->coin;
+}
+int Player::drop_choice(int boardwidth) {return 0;}

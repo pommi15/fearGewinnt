@@ -9,17 +9,18 @@
  *     Tobias WATZEK     *
  *        if15b038       *
  *************************/
-#ifndef INCLUDE_HUMANPLAYER_H_
-#define INCLUDE_HUMANPLAYER_H_
+#ifndef HUMANPLAYER_H_
+#define HUMANPLAYER_H_
 #include <string>
-#include <iostream>
-#include <vector>
 #include "player.h"
-/*class for Human players*/
+/**
+ * Class for human player
+ */
 class HumanPlayer : public Player {
 public:
+  /** constructor */
   HumanPlayer(const std::string &coin);
+  /** get the column in which the player would like to drop a coin*/
   int drop_choice(int boardwidth);
-  std::string coin_getter();
 };
-#endif // INCLUDE_HUMANPLAYER_H_
+#endif  // HUMANPLAYER_H_

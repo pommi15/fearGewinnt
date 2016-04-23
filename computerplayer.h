@@ -9,20 +9,21 @@
  *     Tobias WATZEK     *
  *        if15b038       *
  *************************/
-#ifndef INCLUDE_COMPUTERPLAYER_H_
-#define INCLUDE_COMPUTERPLAYER_H_
+#ifndef COMPUTERPLAYER_H_
+#define COMPUTERPLAYER_H_
 
 #include <string>
-#include <iostream>
-#include <vector>
 #include "player.h"
 
-/*class for Computer players*/
+/**
+ * class for Computer players
+ */
 class ComputerPlayer : public Player {
 public:
+  /** constructor */
   ComputerPlayer(const std::string coin);
+  /** decide where to drop the coin */
   int drop_choice(int boardwidth);
-  std::string coin_getter();
 };
 
-#endif  // INCLUDE_COMPUTERPLAYER_H_
+#endif  // COMPUTERPLAYER_H_

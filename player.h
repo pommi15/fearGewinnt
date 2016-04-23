@@ -9,19 +9,22 @@
  *     Tobias WATZEK     *
  *        if15b038       *
  *************************/
-#ifndef INCLUDE_PLAYERS_H_
-#define INCLUDE_PLAYERS_H_
+#ifndef PLAYER_H_
+#define PLAYER_H_
+
 #include <string>
-#include <iostream>
-#include <vector>
-/* main class */
+
 class Player {
 protected:
+  /** coin of the player */
   std::string coin;
 public:
+  /** constructor */
   Player(const std::string &coin);
-  std::string coin_getter();
+  /** get the coin of the player */
+  virtual std::string get_coin();
+  virtual int drop_choice(int boardwidth);
 };
 
 
-#endif  // INCLUDE_PLAYERS_H_
+#endif  // PLAYER_H_

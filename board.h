@@ -9,25 +9,32 @@
  *     Tobias WATZEK     *
  *        if15b038       *
  *************************/
-#ifndef INCLUDE_BOARD_H_
-#define INCLUDE_BOARD_H_
+#ifndef BOARD_H_
+#define BOARD_H_
 #include <string>
 #include <iostream>
 #include <vector>
 
 class Board {
-private:
-	int width;
-	int height;
-	std::string winner;
-	std::vector<std::vector<std::string>> board;
-public:
-	Board(int width, int height);
-	bool column_check(int column) const;
-	void drop(int column, std::string player);
+ private:
+ 	/** width of the board */
+  int width;
+  /** height of the board */
+  int height;
+  /** winner of the game */
+  std::string winner;
+  /** board */
+  std::vector<std::vector<std::string>> board;
+
+ public:
+ 	/** constructor */
+  Board(int width, int height);
+  bool column_check(int column) const;
+  void drop(int column, std::string player);
   void draw() const;
-	std::string win_check() const;
-	bool full_board_check() const;
+  std::string win_check() const;
+  bool full_board_check() const;
+  int get_width() const;
 };
 
-#endif  // INCLUDE_BOARD_H_
+#endif  // BOARD_H_

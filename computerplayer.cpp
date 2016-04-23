@@ -10,17 +10,27 @@
  *        if15b038       *
  *************************/
 #include <string>
-#include <iostream>
-#include <vector>
-#include <fstream>
+#include <cstdlib>
+#include <ctime>
 
 #include "computerplayer.h"
 
 using namespace std;
-
+/**
+ * Constructor
+ */
 ComputerPlayer::ComputerPlayer(const std::string coin) : Player(coin) {}
+
+/**
+ * Decide where to drop the coin.
+ * Uses the sneaky random algorithm to decide.
+ * @param  boardwidth width of the board
+ * @return            colum to drop the coin
+ */
 int ComputerPlayer::drop_choice(int boardwidth) {
-  int column = rand() % boardwidth + 1;
+  /** create a new random seed based on the current time */
+  std::srand(std::time(nullptr));
+  /** pick a random column between 1 and boardwidth */
+  int column = std::rand() % boardwidth + 1;
   return column;
 }
-std::string ComputerPlayer::coin_getter() { return this->coin; }
