@@ -19,7 +19,10 @@ using namespace std;
 /**
  * Constructor
  */
-ComputerPlayer::ComputerPlayer(const std::string coin) : Player(coin) {}
+ComputerPlayer::ComputerPlayer(const std::string coin) : Player(coin) {
+  /** create a new random seed based on the current time */
+  std::srand(std::time(nullptr));
+}
 
 /**
  * Decide where to drop the coin.
@@ -28,8 +31,6 @@ ComputerPlayer::ComputerPlayer(const std::string coin) : Player(coin) {}
  * @return            colum to drop the coin
  */
 int ComputerPlayer::drop_choice(int boardwidth) {
-  /** create a new random seed based on the current time */
-  std::srand(std::time(nullptr));
   /** pick a random column between 1 and boardwidth */
   int column = std::rand() % boardwidth + 1;
   return column;
